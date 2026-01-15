@@ -1,34 +1,41 @@
-const allPagesBox = document.querySelector('.all-pages .checkbox-box');
-const pageBoxes = document.querySelectorAll(
-  '.checkbox-row:not(.all-pages) .checkbox-box'
-);
-const doneBtn = document.querySelector('.done-btn');
 
-function updateAllPagesState() {
-  const checkedCount = [...pageBoxes].filter(b =>
-    b.classList.contains('checked')
-  ).length;
+const allPages = document.getElementById('allPages');
+const pageItems = document.querySelectorAll('.page-item');
+const pageRows = document.querySelectorAll('.page-row');
+const rowAll = document.getElementById('rowAll');
 
-  allPagesBox.classList.remove('checked', 'indeterminate');
+// Fungsi untuk memperbarui status checkbox All Pages
+function updateAllPagesStatus() {
+  const checkedCount = document.querySelectorAll('.page-item.checked').length;
+  
+  allPages.classList.remove('checked', 'indeterminate');
+  
+  if (checkedCount === pageItems.length) {
+    allPages.classList.add('checked');
 
-  if (checkedCount === pageBoxes.length) {
-    allPagesBox.classList.add('checked');
   } else if (checkedCount > 0) {
-    allPagesBox.classList.add('indeterminate');
+    allPages.classList.add('indeterminate');
   }
-
-  doneBtn.disabled = checkedCount === 0;
 }
 
-allPagesBox.addEventListener('click', () => {
-  const shouldCheck = !allPagesBox.classList.contains('checked');
-  pageBoxes.forEach(b => b.classList.toggle('checked', shouldCheck));
-  updateAllPagesState();
+// Logika klik pada baris "All Pages"
+rowAll.addEventListener('click', () => {
+  const isCurrentlyChecked = allPages.classList.contains('checked');
+  pageItems.forEach(item => {
+    if (isCurrentlyChecked) {
+      item.classList.remove('checked');
+    } else {
+      item.classList.add('checked');
+    }
+  });
+  updateAllPagesStatus();
 });
 
-pageBoxes.forEach(box => {
-  box.addEventListener('click', () => {
-    box.classList.toggle('checked');
-    updateAllPagesState();
+// Logika klik pada baris halaman individual
+pageRows.forEach((row, index) => {
+
+  row.addEventListener('click', () => {
+    pageItems[index].classList.toggle('checked');
+    updateAllPagesStatus();
   });
 });

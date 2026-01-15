@@ -1,3 +1,4 @@
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -6,178 +7,127 @@
 }
 
 body {
-  background: #f5f5f5;
+  background: #fdfdfd;
   display: flex;
   justify-content: center;
-  margin-top: 85px;
+  align-items: center;
+  height: 100vh;
 }
 
-.final-result {
+.card {
   width: 370px;
-  height: 326px;
-  background: #FFFFFF;
-  border: 1px solid #EEEEEE;
+  background: #ffffff;
+  border: 1px solid #eeeeee;
   border-radius: 6px;
+  padding: 10px 0;
 
-  padding-top: 10px;
-  padding-bottom: 10px;
-
-  box-shadow:
-    0px 8px 15px #1414141F,
-    0px 0px 4px #1414141A;
-
-  display: flex;
-  flex-direction: column;
+  box-shadow: 0px 8px 15px rgba(20, 20, 20, 0.12), 0px 0px 4px rgba(20, 20, 20, 0.1);
 }
 
-.checkbox-list {
-  width: 370px;
-  max-height: 226px;
-
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-.checkbox-row {
-  width: 370px;
+.row {
   height: 42px;
-
-  padding-top: 8px;
-  padding-right: 15px;
-  padding-bottom: 8px;
-  padding-left: 22px;
-
+  padding: 0 15px 0 22px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  cursor: pointer;
+  transition: background 0.2s;
 }
 
-.checkbox-text {
+.row:hover {
+  background: #f9f9f9;
+}
+
+.text {
   font-size: 14px;
-  font-weight: 400;
-  line-height: 130%;
-  color: #1F2128;
+  color: #1f2128;
+
 }
 
-.line-dropdown {
-  width: 370px;
-  height: 14px;             
-  padding-top: 6px;
-  padding-left: 15px;
-  padding-right: 15px;
-  background: #FFFFFF;
-}
-
-.line {
-  width: 100%;
+.divider {
   height: 1px;
-  background: #EEEEEE;
+  background: #eeeeee;
+  margin: 10px 15px;
 }
 
-.checkbox-box {
+/* --- FITUR SCROLL TANPA TANDA SCROLLBAR --- */
+.scroll-area {
+  max-height: 168px; /* Membatasi tinggi agar konten bisa di-scroll */
+  overflow-y: auto;
+  scrollbar-width: none; /* Untuk Firefox */
+  -ms-overflow-style: none; /* Untuk Edge lama */
+}
+
+/* Menyembunyikan scrollbar untuk Chrome, Safari, dan Opera */
+
+.scroll-area::-webkit-scrollbar {
+  display: none;
+}
+
+/* --- CHECKBOX --- */
+.checkbox {
   width: 23px;
   height: 23px;
-
+  border: 1px solid #eeeeee;
   border-radius: 6px;
-  border: 1px solid #EEEEEE;
-  background: #FFFFFF;
-
   position: relative;
-  cursor: pointer;
+  transition: all 0.2s;
 }
 
-.checkbox-box:hover {
-  border-color: #C7C7C7;
+.checkbox:hover {
+  border-color: #bdbdbd;
 }
 
-.checkbox-box:active {
-  background: #F4F6FA;
+.checkbox.checked {
+  background: #2463eb;
+  border-color: #2463eb;
+
 }
 
-.checkbox-box.checked {
-  background: #2563EB;
-  border-color: #2563EB;
-}
-
-.checkbox-box.checked::after {
+/* Tanda centang tipis 1.2px */
+.checkbox.checked::after {
   content: "";
   position: absolute;
-
-  width: 6px;
-  height: 11px;
-
-  border-right: 2px solid #FFFFFF;
-  border-bottom: 2px solid #FFFFFF;
-
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%) rotate(45deg);
+  left: 8px; 
+  top: 4px;  
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 1.2px 1.2px 0;
+  transform: rotate(45deg);
 }
 
-.checkbox-box.checked:hover {
-  background: #1D4ED8;
+/* Tanda Strip (Indeterminate) */
+.checkbox.indeterminate {
+  background: #2463eb;
+  border-color: #2463eb;
 }
 
-.checkbox-box.checked:active {
-  background: #1E40AF;
-}
-
-.checkbox-box.indeterminate {
-  background: #2563EB;
-  border-color: #2563EB;
-}
-
-.checkbox-box.indeterminate::after {
+.checkbox.indeterminate::after {
   content: "";
   position: absolute;
-
-  width: 11px;
-  height: 2px;
-
-  background: #FFFFFF;
-
   left: 50%;
   top: 50%;
+  width: 10px;
+  height: 1.2px;
+  background: white;
   transform: translate(-50%, -50%);
 }
 
-.checkbox-box.disabled {
-  background: #F2F2F2;
-  border-color: #DADADA;
-  cursor: not-allowed;
-}
-
-.done-btn {
+/* TOMBOL DONE */
+.btn-done {
   width: 340px;
   height: 40px;
-
-  margin: 8px auto 0; 
-
-  background: #FFCE22;
+  background: #ffce22;
   border: none;
   border-radius: 4px;
-
+  margin: 10px 15px 5px 15px;
   font-size: 14px;
-  font-weight: 400;
-  color: #1F2128;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
   cursor: pointer;
+
+  transition: background 0.2s;
 }
 
-.done-btn:hover:not(:disabled) {
-  background: #FFD84D;
-}
-
-.done-btn:active:not(:disabled) {
-  background: #E6B800;
-}
-
-.done-btn:disabled {
-  background: #F2F2F2;
-  color: #9E9E9E;
-  cursor: not-allowed;
+.btn-done:hover {
+  background: #ffd84d;
 }
