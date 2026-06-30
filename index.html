@@ -1,289 +1,330 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safira Dina Febriana Portfolio</title>
+    <style>
+        body{
+            margin:0;
+            font-family:Arial, Helvetica, sans-serif;
+            color:white;
+            text-align:center;
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+            background: linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#1c92d2);
+            background-size:400% 400%;
+            animation:bgMove 12s ease infinite;
+        }
 
-<title>Safira Dina Febriana Portfolio</title>
+        @keyframes bgMove{
+            0%{background-position:0% 50%}
+            50%{background-position:100% 50%}
+            100%{background-position:0% 50%}
+        }
 
-<style>
+        section{
+            padding:40px 20px;
+            opacity:0;
+            transform:translateY(40px);
+            transition:1s;
+        }
 
-body{
-margin:0;
-font-family:Arial, Helvetica, sans-serif;
-color:white;
-text-align:center;
+        section.show{
+            opacity:1;
+            transform:translateY(0);
+        }
 
-background: linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#1c92d2);
-background-size:400% 400%;
-animation:bgMove 12s ease infinite;
-}
+        .container{
+            background:rgba(0,0,0,0.35);
+            padding:30px;
+            border-radius:20px;
+            backdrop-filter:blur(10px);
+            box-shadow:0 0 20px rgba(0,0,0,0.5);
+            max-width:750px;
+            margin:auto;
+        }
 
-@keyframes bgMove{
-0%{background-position:0% 50%}
-50%{background-position:100% 50%}
-100%{background-position:0% 50%}
-}
+        .profile-img{
+            width:190px;
+            height:190px;
+            border-radius:50%;
+            object-fit:cover;
+            border:5px solid white;
+            box-shadow:0 0 25px #00eaff;
+            margin-bottom:15px;
+            animation:float 4s ease-in-out infinite;
+        }
 
-section{
-padding:40px 20px;
-opacity:0;
-transform:translateY(40px);
-transition:1s;
-}
+        @keyframes float{
+            0%{transform:translateY(0)}
+            50%{transform:translateY(-12px)}
+            100%{transform:translateY(0)}
+        }
 
-section.show{
-opacity:1;
-transform:translateY(0);
-}
+        h1{
+            margin:5px;
+            font-size:30px;
+        }
 
-.container{
-background:rgba(0,0,0,0.35);
-padding:30px;
-border-radius:20px;
-backdrop-filter:blur(10px);
-box-shadow:0 0 20px rgba(0,0,0,0.5);
-max-width:750px;
-margin:auto;
-}
+        #typing{
+            font-size:16px;
+            min-height:60px;
+            line-height:1.5;
+            margin-top:10px;
+        }
 
-.profile-img{
-width:190px;
-height:190px;
-border-radius:50%;
-object-fit:cover;
-border:5px solid white;
-box-shadow:0 0 25px #00eaff;
-margin-bottom:15px;
-animation:float 4s ease-in-out infinite;
-}
+        .skills{
+            display:flex;
+            flex-wrap:wrap;
+            justify-content:center;
+            gap:10px;
+            margin-top:20px;
+        }
 
-@keyframes float{
-0%{transform:translateY(0)}
-50%{transform:translateY(-12px)}
-100%{transform:translateY(0)}
-}
+        .skill{
+            background:#00eaff;
+            color:black;
+            padding:8px 14px;
+            border-radius:20px;
+            font-weight:bold;
+            font-size:14px;
+            transition:0.3s;
+        }
 
-h1{
-margin:5px;
-font-size:30px;
-}
+        .skill:hover{
+            transform:scale(1.1);
+        }
 
-#typing{
-font-size:16px;
-min-height:60px;
-line-height:1.5;
-margin-top:10px;
-}
+        .experience{
+            display:flex;
+            flex-direction:column;
+            gap:20px;
+            margin-top:20px;
+            text-align:left;
+        }
 
-.skills{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:10px;
-margin-top:20px;
-}
+        .job{
+            background:rgba(255,255,255,0.08);
+            padding:20px;
+            border-radius:15px;
+            border-left:5px solid #00eaff;
+            transition:.3s;
+        }
 
-.skill{
-background:#00eaff;
-color:black;
-padding:8px 14px;
-border-radius:20px;
-font-weight:bold;
-font-size:14px;
-transition:0.3s;
-}
+        .job:hover{
+            transform:translateY(-5px);
+            box-shadow:0 0 20px rgba(0,234,255,.5);
+        }
 
-.skill:hover{
-transform:scale(1.1);
-}
+        .job h3{
+            margin:0;
+            color:#00eaff;
+        }
 
-.certificates{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:20px;
-margin-top:20px;
-}
+        .job h4{
+            margin:6px 0 15px;
+            font-weight:normal;
+            color:#ddd;
+        }
 
-.certificates img{
-width:100%;
-border-radius:10px;
-box-shadow:0 0 20px rgba(0,0,0,0.6);
-transition:0.4s;
-}
+        .job ul{
+            padding-left:20px;
+            line-height:1.8;
+        }
 
-.certificates img:hover{
-transform:scale(1.05);
-box-shadow:0 0 25px #00eaff;
-}
+        .job li{
+            margin-bottom:8px;
+        }
 
-</style>
+        .certificates{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+            gap:20px;
+            margin-top:20px;
+        }
 
+        .certificates img{
+            width:100%;
+            border-radius:10px;
+            box-shadow:0 0 20px rgba(0,0,0,0.6);
+            transition:0.4s;
+        }
+
+        .certificates img:hover{
+            transform:scale(1.05);
+            box-shadow:0 0 25px #00eaff;
+        }
+
+    </style>
 </head>
 
 <body>
 
-<audio id="notif" autoplay muted>
-<source src="notif.mp3" type="audio/mpeg">
-</audio>
+    <audio id="notif" autoplay muted>
+        <source src="notif.mp3" type="audio/mpeg">
+    </audio>
 
-<section>
+    <section>
+        <div class="container">
+            <img id="foto" class="profile-img" src="foto1.png">
+            <h1>Safira Dina Febriana</h1>
+            <div id="typing"></div>
+        </div>
+    </section>
 
-<div class="container">
+    <section>
+        <div class="container">
+            <h2>My Bio</h2>
+            <p>
+                Diploma (III) Computer Engineering graduate from Telkom University (Class of 2025) with a GPA of 3.69 (Cum Laude). Enthusiastic about Microcontroller, Embedded Systems, and Internet of Things (IoT) development, with practical experience in designing and implementing projects including an e-Sniffer, a Fuzzy Logic-based Logistical Quality Controller with Nextion Display Interface, and a Robotic Line Follower. Holds a Wireless Interconnection Qualification certification and is eager to contribute in roles related to Microcontroller, Embedded Systems, IoT, Interface Development, and Web Programming.
+            </p>
+        </div>
+    </section>
 
-<img id="foto" class="profile-img" src="foto1.png">
+    <section>
+        <div class="container">
+            <h2>Work Experience</h2>
+            <div class="experience">
+                <div class="job">
+                    <h3>Hardware Engineering Intern</h3>
+                    <h4>CoE STAS-RG | 2023 - 2024</h4>
+                    <ul>
+                        <li>E-Sniffer development using fuzzy logic</li>
+                        <li>Nextion + Android Bluetooth/WiFi system</li>
+                        <li>IIETA publication contribution</li>
+                        <li>Hardware testing & documentation</li>
+                    </ul>
+                </div>
+                
+                <div class="job">
+                    <h3>Admin & Finance Staff</h3>
+                    <h4>PT ESK Multisedia Indonesia | Oct 2025 - Jan 2026</h4>
+                    <ul>
+                        <li>Financial journal & accounts payable</li>
+                        <li>Supply chain data management</li>
+                        <li>Taxation & banking transactions</li>
+                        <li>Petty cash management</li>
+                    </ul>
+                </div>
 
-<h1>Safira Dina Febriana</h1>
+                <div class="job">
+                    <h3>Direct Sales Representative</h3>
+                    <h4>PT Danamas Insan Kreasi Andalan | Feb 2026 - Mar 2026</h4>
+                    <ul>
+                        <li>Merchant acquisition & onboarding</li>
+                        <li>Digital payment promotion</li>
+                        <li>Sales target achievement</li>
+                    </ul>
+                </div>
 
-<div id="typing"></div>
+                <div class="job">
+                    <h3>Food & Beverage Staff</h3>
+                    <h4>Es Krim Pisang Ijo Pandansari | Apr 2026 - Present</h4>
+                    <ul>
+                        <li>Customer service & product serving</li>
+                        <li>Sales transaction handling</li>
+                        <li>Stock management</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-</div>
+    <section>
+        <div class="container">
+            <h2>My Project</h2>
+            <p><b>
+                E-Sniffer: Raw Meat Freshness Detection Tool Based on Odor Classification and Fuzzy Logic Utilizing Gas Fusion Sensor
+            </b></p>
+            <p>
+                DOI :
+                <a href="https://doi.org/10.18280/i2m.240201" target="_blank">
+                    https://doi.org/10.18280/i2m.240201
+                </a>
+            </p>
+        </div>
+    </section>
 
-</section>
+    <section>
+        <div class="container">
+            <h2>Hard Skills</h2>
+            <div class="skills">
+                <div class="skill">Microcontroller (Arduino, ESP)</div>
+                <div class="skill">Internet of Things</div>
+                <div class="skill">Web Programming</div>
+                <div class="skill">SQL</div>
+                <div class="skill">Database</div>
+                <div class="skill">JavaScript</div>
+                <div class="skill">C++</div>
+                <div class="skill">HTML</div>
+                <div class="skill">CSS</div>
+                <div class="skill">PHPMyAdmin</div>
+                <div class="skill">Interface Design</div>
+            </div>
+        </div>
+    </section>
 
-<section>
+    <section>
+        <div class="container">
+            <h2>Certificates</h2>
+            <div class="certificates">
+                <img src="sertif1.png">
+                <img src="sertif2.png">
+                <img src="sertif3.png">
+                <img src="sertif4.png">
+                <img src="sertif5.png">
+                <img src="sertif6.png">
+                <img src="sertif7.png">
+            </div>
+        </div>
+    </section>
 
-<div class="container">
+    <script>
+    
+    const photos=["foto1.png","foto2.png"];
+    let p=0;
 
-<h2>My Bio</h2>
+    setInterval(()=>{
+        p++;
+        if(p>=photos.length){p=0;}
+        document.getElementById("foto").src=photos[p];
+    },3000);
 
-<p>
-Diploma (III) Computer Engineering graduate from Telkom University with a GPA of 3.69 (Cum Laude), class of 2025.
-</p>
+    const text="My name is Safira Dina Febriana, Diploma (III) Computer Engineering graduate from Telkom University.";
 
-</div>
+    let i=0;
 
-</section>
+    function typing(){
+        if(i<text.length){
+            document.getElementById("typing").innerHTML+=text.charAt(i);
+            i++;
+            setTimeout(typing,40);
+        }
+    }
+    
+    typing();
 
-<section>
+    const sections=document.querySelectorAll("section");
 
-<div class="container">
+    function reveal(){
+        sections.forEach(sec=>{
+            const top=sec.getBoundingClientRect().top;
+            const trigger=window.innerHeight-100;
+            if(top<trigger){
+                sec.classList.add("show");
+            }
+        });
+    }
+    window.addEventListener("scroll",reveal);
+    reveal();
 
-<h2>My Project</h2>
+    window.onload=function(){
+    let audio=document.getElementById("notif");
+    audio.muted=false;
+    audio.play();
+    }
 
-<p>
-<b>
-E-Sniffer: Raw Meat Freshness Detection Tool Based on Odor Classification and Fuzzy Logic Utilizing Gas Fusion Sensor
-</b>
-</p>
-
-<p>
-DOI :
-<a href="https://doi.org/10.18280/i2m.240201" target="_blank">
-https://doi.org/10.18280/i2m.240201
-</a>
-</p>
-
-</div>
-
-</section>
-
-<section>
-
-<div class="container">
-
-<h2>Hard Skills</h2>
-
-<div class="skills">
-
-<div class="skill">Microcontroller (Arduino, ESP)</div>
-<div class="skill">Internet of Things</div>
-<div class="skill">Web Programming</div>
-<div class="skill">SQL</div>
-<div class="skill">Database</div>
-<div class="skill">JavaScript</div>
-<div class="skill">C++</div>
-<div class="skill">HTML</div>
-<div class="skill">CSS</div>
-<div class="skill">PHPMyAdmin</div>
-<div class="skill">Interface Design</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section>
-
-<div class="container">
-
-<h2>Certificates</h2>
-
-<div class="certificates">
-
-<img src="sertif1.png">
-<img src="sertif2.png">
-<img src="sertif3.png">
-<img src="sertif4.png">
-<img src="sertif5.png">
-<img src="sertif6.png">
-<img src="sertif7.png">
-
-</div>
-
-</div>
-
-</section>
-
-
-<script>
-
-const photos=["foto1.png","foto2.png"];
-let p=0;
-
-setInterval(()=>{
-p++;
-if(p>=photos.length){p=0;}
-document.getElementById("foto").src=photos[p];
-},3000);
-
-const text="My name is Safira Dina Febriana, Diploma (III) Computer Engineering graduate from Telkom University.";
-
-let i=0;
-
-function typing(){
-if(i<text.length){
-document.getElementById("typing").innerHTML+=text.charAt(i);
-i++;
-setTimeout(typing,40);
-}
-}
-
-typing();
-
-const sections=document.querySelectorAll("section");
-
-function reveal(){
-
-sections.forEach(sec=>{
-
-const top=sec.getBoundingClientRect().top;
-const trigger=window.innerHeight-100;
-
-if(top<trigger){
-sec.classList.add("show");
-}
-
-});
-
-}
-
-window.addEventListener("scroll",reveal);
-reveal();
-
-window.onload=function(){
-
-let audio=document.getElementById("notif");
-
-audio.muted=false;
-audio.play();
-
-}
-
-</script>
+    </script>
 
 </body>
-
 </html>
